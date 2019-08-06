@@ -6,14 +6,14 @@ import TodoForm from './components/TodoComponents/TodoForm';
 
 const todoData = [
   {
-    task: 'Organize Garage',
+    task: 'Finish Reading The Book',
     id: 1528817077286,
-    completed: false
+    completed: true
   },
   {
-    task: 'Bake Cookies',
+    task: 'Get Groceries',
     id: 152888,
-    completed: false
+    completed: true
   }
 ];
 
@@ -50,11 +50,17 @@ class App extends React.Component {
     const newItem = {
       task: itemName,
       id: Date.now(),
-      completed: false
+      completed: true
     };
     console.log(itemName)
     this.setState({
       toListItems: [...this.state.toListItems, newItem]
+    });
+  };
+
+  deleteToDo = () => {
+    this.setState({
+      toListItems: this.state.toListItems.filter(toDo => toDo.completed)
     });
   };
 
@@ -66,7 +72,7 @@ class App extends React.Component {
 
         <div className="container">
           <TodoForm addItem={this.addItem} />
-          <TodoList toDoInfo={this.state.toListItems} />
+          <TodoList toDoInfo={this.state.toListItems} toggleItem={this.toggleItem} deleteToDo={this.deleteToDo} />
         </div>
       </div>
     );

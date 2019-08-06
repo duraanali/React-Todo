@@ -20,3 +20,10 @@
  .between {
        margin-bottom: 10px;
  }
+
+
+.item {
+
+  text-decoration: line-through;
+}
+
